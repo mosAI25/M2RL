@@ -1,10 +1,5 @@
 # To Mix or To Merge: Multi-Domain Reinforcement Learning for Large Language Models
 
-This repository contains the official implementation and analysis code for the paper:
-
-**To Mix or To Merge: Toward Multi-Domain Reinforcement Learning for Large Language Models**  
-
-
 ---
 
 ## 🔍 Overview
