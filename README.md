@@ -16,6 +16,8 @@ We choose multiple commonly used high-level tasks (e.g., **math, coding, science
 - Model prediction behavior
 - Information constraints
 
+Paper:
+
 ---
 
 ## ✨ Key Findings
