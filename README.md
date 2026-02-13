@@ -1,33 +1,30 @@
-# To Mix or To Merge: Multi-Domain Reinforcement Learning for Large Language Models
+# To Mix or To Merge: Toward Multi-Domain Reinforcement Learning for Large Language Models
 
 ---
 
 ## 🔍 Overview
 
-Reinforcement Learning with Verifiable Rewards (RLVR) has proven highly effective for inducing expert-level reasoning in specific domains such as mathematics and code generation.  
-However, **how to best combine RLVR across multiple domains** remains an open question.
+Reinforcement Learning with Verifiable Rewards (RLVR) has proven highly effective for inducing expert-level reasoning in specific domains such as mathematics and code generation. However, **how to best combine RLVR across multiple domains** remains an open question.
 
-This work presents a **systematic comparison** between two dominant paradigms for multi-domain RLVR:
-
+This project presents detailed comparison and analysis about these paradigms for multi-domain RLVR:
 1. **Mixed multi-task RLVR**  
-2. **Separate domain-specific RLVR followed by model merging or distillation**
+2. **Separate domain-specific RLVR followed by model merging**
 
-We conduct extensive experiments across **math, coding, science, and instruction following**, and provide in-depth analysis of:
-- Performance trade-offs
+We choose multiple commonly used high-level tasks (e.g., **math, coding, science, and instruction following**) as our target domains, and provide in-depth analysis of:
 - Training efficiency
-- Weight-space geometry
-- Policy neighborhood interactions
-- Emergent verification and self-discrimination abilities
+- Weight space geometry
+- Model prediction behavior
+- Information constraints
 
 ---
 
 ## ✨ Key Findings
 
-- **Mixed multi-task RLVR achieves comparable or better performance** than model merging, while using only **~33% of GPU hours**.
-- Cross-domain RLVR shows **minimal interference**; reasoning-intensive domains (math, code, science) exhibit **strong synergistic effects**.
+- Mixed multi-task RLVR achieves comparable performance with separate RLVR followed by model merging, while using only **33.2% of GPU hours**.
+- Cross-domain RLVR shows **minimal interference**; reasoning-intensive domains (math, coding, science) exhibit **strong synergistic effects**.
 - Weight update footprints across domains **significantly overlap**, with positive cosine similarity after random projection.
 - Performance is better explained by **policy neighborhood transfer** rather than KL divergence magnitude alone.
-- Multi-task RLVR induces **emergent cross-domain verification synergy**, combining outcome-level intuition and process-level reasoning.
+- Model merging primarily inherits the original capabilities of the single-task models, whereas multi-task training exhibits a larger divergence to the single-task ones.
 
 ---
 
@@ -37,7 +34,7 @@ We conduct extensive experiments across **math, coding, science, and instruction
 - **Qwen3-4B-Base**
 
 ### Domains
-- Mathematics
+- Math
 - Coding
 - Science
 - Instruction Following
@@ -47,8 +44,8 @@ We conduct extensive experiments across **math, coding, science, and instruction
 2. Reinforcement Learning with Verifiable Rewards (RLVR) using **GRPO**
 
 ### Datasets
-- Nemotron-3 Nano SFT & RLVR datasets
-- DAPO, CodeContests, OpenScienceReasoning-2, WildChat-1M (see paper for full details)
+- Nemotron-3 Nano SFT datasets: https://huggingface.co/collections/nvidia/nemotron-post-training-v3
+- Nemotron-3 Nano RL datasets: https://huggingface.co/datasets/nvidia/Nemotron-3-Nano-RL-Training-Blend
 
 ---
 
