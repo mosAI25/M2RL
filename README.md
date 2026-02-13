@@ -107,19 +107,47 @@ The training setting and total GPU hours for different RLVR and on-policy distil
 | Multi-Task | 128 | 16 | 400 | 2166.4 |
 | MT-OPD | 256 | 4 | 200 | 816.0 |
 
+so multi-task training takes about 2166.4/(2172.8+3187.2+787.2+377.6) = 33.2% GPU hours of separate training followed by model merging.
 
 
 ---
 
-## 🔬 Analysis Modules
+## 🔬 Mechanism Analysis
+### Explore Weight Shift
 
-This repository includes analysis code for:
 
-- Weight shift overlap & cosine similarity
-- Policy KL cross-comparison
-- Policy neighborhood identification
-- Skill overlap between multi-task and single-task models
-- Outcome-based vs process-based verification
-- Emergent self-discrimination behavior
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
