@@ -109,6 +109,7 @@ The training setting and total GPU hours for different RLVR and on-policy distil
 
 so multi-task training takes about 2166.4/(2172.8+3187.2+787.2+377.6) = 33.2% GPU hours of separate training followed by model merging.
 
+As shown below, the reinforcement learning of three reasoning domains can stably improve each other’s performance. The instruction following domain can help in the evaluation of the three reasoning domains, whereas the inverse enhancement remains marginal.
 
 ---
 
@@ -116,10 +117,13 @@ so multi-task training takes about 2166.4/(2172.8+3187.2+787.2+377.6) = 33.2% GP
 ### Explore Weight Shift
 
 
+### Explore Policy Neighborhoods
 
 
+### Do Multi-Task Learners and Merged Models Acquire the Same Skills as Single-Task Models?
 
 
+### Locus of Error, Verification Horizon, and Multi-Task Synergy
 
 
 
