@@ -26,7 +26,7 @@ from typing import Dict, Any, List
 import numpy as np
 import gc
 import orjson
-from datasets import load_dataset, Dataset, disable_caching, config
+from datasets import load_dataset, Dataset, disable_caching, config, Value, Features
 from multiprocessing import cpu_count
 
 # Configure datasets to use our cache directory
@@ -45,6 +45,19 @@ hf_datasets = {
     "code_contests": load_dataset("raw/deepmind/code_contests"),
     "open-r1/codeforces": load_dataset("raw/open-r1/codeforces")
 }
+
+FEATURES = Features({
+    'messages': [
+        {
+            'content': Value('string'),
+            'reasoning_content': Value('string'),
+            'role': Value('string'),
+            'tool_calls': Value('string')
+        }
+    ],
+    'tools': Value('string'),
+    '__filter__': Value('bool')
+})
 
 
 def get_question(ds_name: str, split: str, index: int) -> str | None:
@@ -225,6 +238,8 @@ def process_row(row: Dict[str, Any], is_competitive: bool) -> Dict[str, Any] | N
             msg["tool_calls"] = orjson.dumps(msg["tool_calls"]).decode('utf-8')
         if "tool_call_id" in msg:
             msg.pop("tool_call_id")
+        if 'name' in msg:
+            msg.pop('name')
 
     # Only keep messages and tools
     result = {'messages': messages}
@@ -280,7 +295,8 @@ def process_dataset_concurrent(ds_or_path: Dataset | str, is_competitive: bool) 
         process_fn,
         num_proc=NUM_PROC,
         desc="Processing rows",
-        remove_columns=ds.column_names
+        remove_columns=ds.column_names,
+        features=FEATURES
     )
 
     # Filter out invalid rows
